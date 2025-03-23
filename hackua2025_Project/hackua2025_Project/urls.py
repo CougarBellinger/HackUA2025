@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('itinerary-result/', views.itinerary_result_view, name='itinerary_result'),
     path('mood/', views.mood, name='mood'),
-    path('questions/', views.travel_question, name='travel_question')
-
+    path('questions/', views.travel_question, name='travel_question'),
+    path('other-concerns/', views.other_textbox, name='other_textbox')
 ]
     
