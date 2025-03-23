@@ -13,29 +13,17 @@
 </head>
 <body>
     <div class="container text-center my-5">
-        <h1>When do you want to travel?</h1>
+        <h1>{{ question }}</h1>
         <div class="row justify-content-center mt-4">
+            {% for answer in answers %}
             <div class="col-md-4">
                 <div class="card" style="cursor: pointer;">
                     <div class="card-body">
-                        <h5 class="card-title">Spring</h5>
+                        <h5 class="card-title">{{ answer }}</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card" style="cursor: pointer;">
-                    <div class="card-body">
-                        <h5 class="card-title">Summer</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card" style="cursor: pointer;">
-                    <div class="card-body">
-                        <h5 class="card-title">Next Month</h5>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
