@@ -1,0 +1,25 @@
+<!-- travel_buddy/itinerary_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Itinerary Results</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Suggested Itinerary</h1>
+    <p><strong>Destination:</strong> {{ destination }}</p>
+    <p><strong>Travel Type:</strong> {{ travel_type }}</p>
+    <p><strong>Time:</strong> {{ time }}</p>
+    <p><strong>Rules:</strong> {{ rules }}</p>
+
+    <hr>
+    <!-- If the itinerary is a simple string, you can just display it directly -->
+    <div>
+      <pre>{{ itinerary }}</pre>
+    </div>
+
+    <!-- Or if it's structured data (e.g., a list or JSON), you can format it accordingly. -->
+  </div>
+</body>
+</html>
