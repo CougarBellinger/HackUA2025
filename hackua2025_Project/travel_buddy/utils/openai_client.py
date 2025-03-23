@@ -48,11 +48,15 @@ if __name__ == "__main__":
     client = OpenAIClient()
 
     rules = """
-    Give me an itinerary based on the following
+    Give me a detailed itinerary based on the following
     Add hotel stay as well.
     Generate an approximate final budget for the entire itinerary.
     If possible also give links to websites for booking.
     Just the itinerary, no explanation
+    give the itinerary in the following format
+    day1 : <>
+    day2 : <>
+    ...
     """
 
     destination = "Somewhere in Oceania"

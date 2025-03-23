@@ -88,8 +88,16 @@ def itinerary_result_view(request):
     time = selected_answers.get("travel_type", "None")
     souvenir = selected_answers.get("souvenir", "None")
     with_who = selected_answers.get("with_who", "None")
-    rules = 'Try to keep costs low and provide booking links'
-
+    rules =  """ Give me a detailed itinerary based on the following
+    Add hotel stay as well.
+    Generate an approximate final budget for the entire itinerary.
+    If possible also give links to websites for booking.
+    Just the itinerary, no explanation
+    give the itinerary in the following format
+    day1 : <>
+    day2 : <>
+    ...
+    """
     itinerary_text = client.get_itinerary(destination, travel_type, time, souvenir, with_who, rules)
     # Render the result in a template
     return render(request, 'travel_buddy/itinerary_result.html', {
