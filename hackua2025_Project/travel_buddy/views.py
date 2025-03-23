@@ -81,6 +81,7 @@ def home(request):
 def itinerary_result_view(request):
 
     openai.api_key = settings.OPENAI_API_KEY
+    selected_answers = request.session.get("selected_answers", {})
     client =openai_client.OpenAIClient()
     destination = 'Somewhere in Oceania'
     travel_type = 'Adventure'
