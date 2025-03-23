@@ -22,7 +22,7 @@ def travel_question(request):
         "travel_vibe": {
             "question": "What's your ideal travel vibe? Are you looking for something that feels...",
             "answers": ["Adventurous and exciting", "Peaceful and rejuvenating", "Authentic and insightful", "Fun and social"],
-            "next":""
+            "next":"souvenir"
         },
         "souvenir": {
             "question": "If you could bring only one type of souvenir back from a trip, what would it most likely be?",
@@ -30,28 +30,18 @@ def travel_question(request):
             "next": "with_who"
         },
         "with_who": {
-            "questions":"Who are you most likely to be traveling with on this trip?",
+            "question":"Who are you most likely to be traveling with on this trip?",
             "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
             "next": "travel_time"
-        },
-        "travel_time": {
-            "question": "When do you want to travel?",
-            "answers": ["Spring", "Summer", "Next Month"],
-            "next": "destination",  # The next question to redirect to
-        },
-        "destination": {
-            "question": "Where do you want to travel?",
-            "answers": ["Europe", "Asia", "Oceania"],
-            "next": None,  # No next question, this is the last one
         },
     }
 
     # Get the current question from the request or default to the first question
-    question_id = request.GET.get("question_id", "travel_time")
+    question_id = request.GET.get("question_id", "travel_personality")
 
     # If the question doesn't exist, redirect to the first question
     if question_id not in questions:
-        return redirect(f"/questions/?question_id=travel_time")
+        return redirect(f"/questions/?question_id=travel_personality")
 
 
     question_data = questions[question_id]
@@ -69,7 +59,7 @@ def travel_question(request):
         if next_question:
             return redirect(f"/questions/?question_id={next_question}")
         else:
-            return redirect("mood")  # Redirect to a summary or final page
+            return redirect("itinerary_result_view")  # Redirect to a summary or final page
 
     context = {
         "question_id": question_id,
