@@ -11,8 +11,8 @@
     <link href="{% static 'styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container-fluid text-center">
+    <header class="header">
+        <div class="container-fluid text-left">
         {% block header %}Travel Buddy{% endblock %} 
         </div>
     </header>
@@ -20,9 +20,8 @@
         {% block content %} {% endblock %}
     </main>
     
-    <footer>
+    <footer class="footer">
         {% block footer %} {% endblock %}
-        </div>
     </footer>
 </body>
 </html>
