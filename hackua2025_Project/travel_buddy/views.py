@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
+from django.utils.translation.template import context_re
 from openai import OpenAI
 import openai
 from .utils import openai_client
@@ -25,7 +26,7 @@ def travel_question(request):
 
     # If the question doesn't exist, redirect to the first question
     if question_id not in questions:
-        return redirect(f"/questions/?question_id={next_question}")
+        return redirect(f"/questions/?question_id=travel_time")
 
 
     question_data = questions[question_id]
@@ -44,6 +45,15 @@ def travel_question(request):
             return redirect(f"/questions/?question_id={next_question}")
         else:
             return redirect("mood")  # Redirect to a summary or final page
+
+    context = {
+        "question_id": question_id,
+        "question":question_data["question"],
+        "answers":question_data["answers"],
+        "selected_answer":selected_answers.get(question_id,None)
+    }
+
+    return render(request, "travel_buddy/travel_question.html", context)
 
 def mood(request):
     moods = ["Relaxed", "Adventurous", "Inspired", "Pampered", "Connected", "Knowledgeable", "Artistic"]  # Hardcoded moods
