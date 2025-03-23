@@ -25,7 +25,7 @@ def travel_question(request):
             "next":"souvenir"
         },
         "souvenir": {
-            "question": "If you could bring only one type of souvenir back from a trip, what would it be?",
+            "question": "If you could bring only one souvenir back from a trip, what would it be?",
             "answers": ["Something practical and useful", "A beautiful piece of art or craftsmanship", "A unique local food or drink", "Photos and memories"],
             "next": "with_who"
         },
