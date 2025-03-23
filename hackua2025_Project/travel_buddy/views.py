@@ -59,7 +59,8 @@ def mood(request):
     moods = ["Relaxed", "Adventurous", "Inspired", "Pampered", "Connected", "Knowledgeable", "Artistic"]  # Hardcoded moods
     return render(request, 'travel_buddy/mood.html', {'moods': moods})
 
-
+def home(request):
+    return render(request, 'travel_buddy/home.html')
 # Return "Prompt/'Get Itinerary'"
 
 def itinerary_result_view(request):
