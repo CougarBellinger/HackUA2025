@@ -65,10 +65,11 @@ def mood(request):
 def itinerary_result_view(request):
 
     openai.api_key = settings.OPENAI_API_KEY
+    selected_answers = request.session.get("selected_answers", {})
     client =openai_client.OpenAIClient()
-    destination = 'Somewhere in Oceania'
+    destination = selected_answers.get("destination", "None")
     travel_type = 'Adventure'
-    time = '1 week'
+    time = selected_answers.get("travel_time", "None")
     rules = 'Try to keep costs low and provide booking links'
 
     itinerary_text = client.get_itinerary(destination, travel_type, time, rules)
