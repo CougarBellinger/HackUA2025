@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center mt-4">How do you want to feel after your trip?</h2>
+    <div class="row mt-4">
+        {% for mood in moods %}
+        <div class="col-md-4">
+            <button class="card btn btn-outline-primary text-center p-3" 
+                    onclick="selectMood('{{ mood }}')">
+                <h4>{{ mood }}</h4>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    function selectMood(mood) {
+        window.location.href = `/trips/recommendations?mood=${mood}`;
+    }
+</script>
+{% endblock %}
