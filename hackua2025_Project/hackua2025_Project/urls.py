@@ -22,6 +22,6 @@ from travel_buddy import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('mood/', views.mood, name='mood'),
-    path('travel-question/', views.travel_question, name='travel_question')
+    path('questions/', views.travel_question, name='travel_question')
 ]
     
