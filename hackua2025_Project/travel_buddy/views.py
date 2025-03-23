@@ -15,22 +15,22 @@ def travel_question(request):
             "next":"perfect_day"
         },
         "perfect_day": {
-            "question": " Imagine your perfect travel day. Would it involve...",
+            "question": "Imagine your perfect travel day. Would it involve...",
             "answers": ["Exploring bustling city streets and iconic landmarks", "Relaxing on a beautiful beach or by a serene lake", "Hiking through nature and discovering hidden gems", "Immersing yourself in local culture and traditions"],
             "next":"travel_vibe"
         },
         "travel_vibe": {
-            "question": "What's your ideal travel vibe? Are you looking for something that feels...",
+            "question": "What's your ideal travel vibe?",
             "answers": ["Adventurous and exciting", "Peaceful and rejuvenating", "Authentic and insightful", "Fun and social"],
             "next":"souvenir"
         },
         "souvenir": {
-            "question": "If you could bring only one type of souvenir back from a trip, what would it most likely be?",
+            "question": "If you could bring only one souvenir back from a trip, what would it be?",
             "answers": ["Something practical and useful", "A beautiful piece of art or craftsmanship", "A unique local food or drink", "Photos and memories"],
             "next": "with_who"
         },
         "with_who": {
-            "question": "Who are you most likely to be traveling with on this trip?",
+            "question":"Who are you planning on traveling with this trip?",
             "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
             "next": "duration"
         },
@@ -69,7 +69,7 @@ def travel_question(request):
         if next_question:
             return redirect(f"/questions/?question_id={next_question}")
         else:
-            return redirect("itinerary_result_view")  # Redirect to a summary or final page
+            return redirect(itinerary_result_view)  # Redirect to a summary or final page
 
     context = {
         "question_id": question_id,
@@ -91,13 +91,24 @@ def home(request):
 def itinerary_result_view(request):
 
     openai.api_key = settings.OPENAI_API_KEY
+    selected_answers = request.session.get("selected_answers", {})
     client =openai_client.OpenAIClient()
-    destination = 'Somewhere in Oceania'
-    travel_type = 'Adventure'
-    time = '1 week'
-    rules = 'Try to keep costs low and provide booking links'
-    
-    itinerary_text = client.get_itinerary(destination, travel_type, time, rules)
+    destination = selected_answers.get("travel_personality", "None")
+    travel_type = selected_answers.get("perfect_day", "None")
+    time = selected_answers.get("travel_type", "None")
+    souvenir = selected_answers.get("souvenir", "None")
+    with_who = selected_answers.get("with_who", "None")
+    rules =  """ Give me a detailed itinerary based on the following
+    Add hotel stay as well.
+    Generate an approximate final budget for the entire itinerary.
+    If possible also give links to websites for booking.
+    Just the itinerary, no explanation
+    give the itinerary in the following format
+    day1 : <>
+    day2 : <>
+    ...
+    """
+    itinerary_text = client.get_itinerary(destination, travel_type, time, souvenir, with_who, rules)
     # Render the result in a template
     return render(request, 'travel_buddy/itinerary_result.html', {
         'itinerary': itinerary_text
