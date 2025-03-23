@@ -9,24 +9,39 @@ from .utils import openai_client
 def travel_question(request):
     # Define the questions
     questions = {
-        "travel_time": {
-            "question": "When do you want to travel?",
-            "answers": ["Spring", "Summer", "Next Month"],
-            "next": "destination",  # The next question to redirect to
+        "travel_personality": {
+            "question": "When you travel, are you more likely to...",
+            "answers": ["Plan every detail meticulously", "Have a general idea but leave room for spontaneity", "Completely wing it and see where the wind takes me", "Follow recommendations and tips from locals or travel resources"],
+            "next":"perfect_day"
         },
-        "destination": {
-            "question": "Where do you want to travel?",
-            "answers": ["Europe", "Asia", "Oceania"],
-            "next": None,  # No next question, this is the last one
+        "perfect_day": {
+            "question": " Imagine your perfect travel day. Would it involve...",
+            "answers": ["Exploring bustling city streets and iconic landmarks", "Relaxing on a beautiful beach or by a serene lake", "Hiking through nature and discovering hidden gems", "Immersing yourself in local culture and traditions"],
+            "next":"travel_vibe"
+        },
+        "travel_vibe": {
+            "question": "What's your ideal travel vibe? Are you looking for something that feels...",
+            "answers": ["Adventurous and exciting", "Peaceful and rejuvenating", "Authentic and insightful", "Fun and social"],
+            "next":"souvenir"
+        },
+        "souvenir": {
+            "question": "If you could bring only one type of souvenir back from a trip, what would it most likely be?",
+            "answers": ["Something practical and useful", "A beautiful piece of art or craftsmanship", "A unique local food or drink", "Photos and memories"],
+            "next": "with_who"
+        },
+        "with_who": {
+            "question":"Who are you most likely to be traveling with on this trip?",
+            "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
+            "next": "travel_time"
         },
     }
 
     # Get the current question from the request or default to the first question
-    question_id = request.GET.get("question_id", "travel_time")
+    question_id = request.GET.get("question_id", "travel_personality")
 
     # If the question doesn't exist, redirect to the first question
     if question_id not in questions:
-        return redirect(f"/questions/?question_id=travel_time")
+        return redirect(f"/questions/?question_id=travel_personality")
 
 
     question_data = questions[question_id]
@@ -44,7 +59,7 @@ def travel_question(request):
         if next_question:
             return redirect(f"/questions/?question_id={next_question}")
         else:
-            return redirect("mood")  # Redirect to a summary or final page
+            return redirect("itinerary_result_view")  # Redirect to a summary or final page
 
     context = {
         "question_id": question_id,
