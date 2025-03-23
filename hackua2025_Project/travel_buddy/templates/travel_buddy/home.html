@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+{%block header%}{%endblock%}
+{% block content %}
+    <div>
+        <h1>Travel Buddy</h1>
+        <p>The AI powered travel advisor</p>
+    </div>
+    <div>
+        <sub>Plan your trip in 5 minutes</sub>
+    <button onclick="window.location.href='{% url 'mood' %}'"> Begin </button>
+    </div>
+{% endblock %}
