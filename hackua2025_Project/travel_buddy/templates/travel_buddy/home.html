@@ -1,0 +1,11 @@
+{% extends './base.html' %}
+
+
+{% block content %}
+    <div>
+        <h1>Welcome to Travel Buddy! <br/> Plan your next adventure in less than 5 mins.</h1>
+        <p>Powered by you</p>
+    </div>
+
+    <button onclick="window.location.href='{% url 'travel_question'%}'"> Start </button>
+{% endblock %}

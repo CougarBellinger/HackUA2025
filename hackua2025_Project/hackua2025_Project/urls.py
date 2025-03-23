@@ -20,6 +20,7 @@ from django.urls import path
 from travel_buddy import views
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('itinerary-result/', views.itinerary_result_view, name='itinerary_result'),
     path('mood/', views.mood, name='mood'),
