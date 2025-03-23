@@ -8,7 +8,7 @@ def travel_question(request):
         "travel_time": {
             "question": "When do you want to travel?",
             "answers": ["Spring", "Summer", "Next Month"],
-            "next": "destination_question",  # The next question to redirect to
+            "next": "destination",  # The next question to redirect to
         },
         "destination": {
             "question": "Where do you want to travel?",
@@ -22,7 +22,8 @@ def travel_question(request):
 
     # If the question doesn't exist, redirect to the first question
     if question_id not in questions:
-        return redirect(f"?question_id=travel_time")
+        return redirect(f"/questions/?question_id={next_question}")
+
 
     question_data = questions[question_id]
 
@@ -37,7 +38,7 @@ def travel_question(request):
         # Redirect to the next question
         next_question = question_data["next"]
         if next_question:
-            return redirect(f"?question_id={next_question}")
+            return redirect(f"/questions/?question_id={next_question}")
         else:
             return redirect("mood")  # Redirect to a summary or final page
 
