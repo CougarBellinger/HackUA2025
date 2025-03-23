@@ -96,7 +96,7 @@ def itinerary_result_view(request):
     travel_type = 'Adventure'
     time = '1 week'
     rules = 'Try to keep costs low and provide booking links'
-
+    
     itinerary_text = client.get_itinerary(destination, travel_type, time, rules)
     # Render the result in a template
     return render(request, 'travel_buddy/itinerary_result.html', {
