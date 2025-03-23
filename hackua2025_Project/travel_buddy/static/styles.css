@@ -5,63 +5,120 @@ html {
     height: 100%;
     margin: 0;
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
 }
 
+body {
+    /* Additional style to ensure content stretches */
+    margin: 0;
+    position: relative;
+    /* Needed for absolute positioning of footer */
+    min-height: 100vh;
+    /* Ensure body is at least viewport height */
+    padding-bottom: 60px;
+    /* Height of the footer */
+    box-sizing: border-box;
+}
+
 .header {
-    background-color: #f8f9fa;
+    width: 100%;
+    height: 100px;
+    background-color: #1b1b1b;
+    color: #fed4ef;
     padding: 10px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .footer {
-    background-color: #f8f9fa;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    /* Example footer height */
+    background-color: #1b1b1b;
     padding: 10px;
     text-align: center;
 }
 
 .content {
+    width: 100%;
     flex-grow: 1;
+    flex-direction: column;
     display: flex;
-    justify-content: left;
-    /* Center horizontally */
-    align-items: center;
-    /* Center vertically */
 }
 
 .question-container {
-    text-align: left;
     width: 80%;
+    padding: 20px;
+    flex: 2;
+    align-content: center;
     /* Adjust as needed */
 }
 
+.question-container h1 {
+    font-size: 7em;
+}
+
+.question-container h2 {
+    font-size: 6em;
+}
+
+.question-container h3 {
+    font-size: 3em;
+}
+
+.question-container p {
+    font-size: 2em;
+    font-style: italic;
+}
+
 .question-text {
+    justify-content: center;
+    text-align: left;
     font-size: 6em;
     /* Make the question text large */
     margin-bottom: 30px;
     /* Increased margin for better separation */
 }
 
-.answer-card {
+
+.response-container {
+    text-align: center;
+    /* Add some padding for spacing */
+    padding: 20px;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    /* Center responses horizontally within their container */
+    justify-content: center;
+    /* Center responses vertically within their container */
+    margin-top: auto;
+    /* Push the response container to the bottom */
+}
+
+
+.response-card {
     transition: transform 0.2s;
 }
 
-.answer-card:hover {
-    transform: scale(1.05);
-}
-
-.selected {
-    background-color: #007bff;
-    /* Example styling for selected answer */
-    color: white;
+.response-card:hover {
+    color: #f8f9fa;
 }
 
 .card {
+    background-color: #fed4ef;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
+    background-color: #ffeaf8;
+    color: #000000;
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }

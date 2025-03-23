@@ -1,11 +1,12 @@
 {% extends './base.html' %}
 
-
+{%block header%}{%endblock%}
 {% block content %}
-    <div>
-        <h1>Welcome to Travel Buddy! <br/> Plan your next adventure in less than 5 mins.</h1>
+    <div class="question-container">
+        <h1>Welcome to Travel Buddy!</h1>
+        <h3>Plan your next adventure in less than 5 mins.</h3>
         <p>Powered by you</p>
+        <button class="card answer-card" onclick="window.location.href='{% url 'travel_question'%}'"> Start </button>
     </div>
 
-    <button onclick="window.location.href='{% url 'travel_question'%}'"> Start </button>
 {% endblock %}
