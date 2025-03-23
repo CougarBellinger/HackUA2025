@@ -30,10 +30,20 @@ def travel_question(request):
             "next": "with_who"
         },
         "with_who": {
-            "question":"Who are you most likely to be traveling with on this trip?",
+            "question": "Who are you most likely to be traveling with on this trip?",
             "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
-            "next": "travel_time"
+            "next": "duration"
         },
+        "duration": {
+            "question": "What would you like the duration of your trip to be?",
+            "answers": ["Weekend Getaway (1-3 days)", "Short Escape (4-6 days)", "Week-Long Adventure (7-10 days)", "Extended Journey (11+ days)"],
+            "next": "budget"
+        },
+        "budget": {
+            "question": "What is your budget for this trip?",
+            "answers": ["Shoestring Explorer ($ - Budget-friendly travel, save every penny!)", "Comfort Seeker ($$ - A balance of affordability and convenience)", "Luxury Adventurer ($$$ - Treat yourself to some premium experiences)", "VIP Globetrotter ($$$$ - No expense spared, live your best life!)"],
+            "next": ""
+        }
     }
 
     # Get the current question from the request or default to the first question
