@@ -81,13 +81,24 @@ def home(request):
 def itinerary_result_view(request):
 
     openai.api_key = settings.OPENAI_API_KEY
+    selected_answers = request.session.get("selected_answers", {})
     client =openai_client.OpenAIClient()
-    destination = 'Somewhere in Oceania'
-    travel_type = 'Adventure'
-    time = '1 week'
-    rules = 'Try to keep costs low and provide booking links'
-
-    itinerary_text = client.get_itinerary(destination, travel_type, time, rules)
+    destination = selected_answers.get("travel_personality", "None")
+    travel_type = selected_answers.get("perfect_day", "None")
+    time = selected_answers.get("travel_type", "None")
+    souvenir = selected_answers.get("souvenir", "None")
+    with_who = selected_answers.get("with_who", "None")
+    rules =  """ Give me a detailed itinerary based on the following
+    Add hotel stay as well.
+    Generate an approximate final budget for the entire itinerary.
+    If possible also give links to websites for booking.
+    Just the itinerary, no explanation
+    give the itinerary in the following format
+    day1 : <>
+    day2 : <>
+    ...
+    """
+    itinerary_text = client.get_itinerary(destination, travel_type, time, souvenir, with_who, rules)
     # Render the result in a template
     return render(request, 'travel_buddy/itinerary_result.html', {
         'itinerary': itinerary_text
