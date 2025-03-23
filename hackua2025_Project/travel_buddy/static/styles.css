@@ -117,6 +117,13 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.card-itinerary {
+    background-color: #fed4ef;
+    color: rgb(0, 0, 0);
+    /* cursor: pointer; */
+    /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
+}
+
 .card:hover {
     background-color: #ffeaf8;
     color: #000000;
