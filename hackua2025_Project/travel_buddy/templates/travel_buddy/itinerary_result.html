@@ -1,20 +1,24 @@
-<!-- travel_buddy/itinerary_result.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Itinerary Results</title>
-</head>
-<body>
-  <div class="container">
-    <h1>Suggested Itinerary</h1>
+<!-- itinerary_result.html -->
+{% extends './base.html' %}
+{% load static %}
 
+{% block title %}
+Suggested Itinerary
+{% endblock %}
 
-    <hr>
-    <div>
-      <pre>{{ itinerary }}</pre>
+{% block content %}
+<div class="content">
+  <h1 class="mb-4">Suggested Itinerary</h1>
+
+  <div class="card-itinerary">
+    <div class="card-header">
+      <strong>Travel Personality:</strong> {{ travel_personality }} |
+      <strong>Travel Type:</strong> {{ travel_type }} |
+      <strong>With Who:</strong> {{ with_who }}
     </div>
-
+    <div class="card-body">
+      <pre class="mb-0">{{ itinerary }}</pre>
+    </div>
   </div>
-</body>
-</html>
+</div>
+{% endblock %}
