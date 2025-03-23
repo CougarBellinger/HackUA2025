@@ -8,3 +8,20 @@
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.custom-button {
+    background-color: #007bff; /* Primary blue color */
+    color: white; /* White text */
+    padding: 12px 24px; /* Adjust padding for better size */
+    font-size: 16px; /* Slightly larger text */
+    border-radius: 25px; /* Rounded corners */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Show pointer on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+

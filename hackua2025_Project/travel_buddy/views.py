@@ -36,3 +36,6 @@ def itinerary_result_view(request):
     return render(request, 'travel_buddy/itinerary_result.html', {
         'itinerary': itinerary_text
     })
+
+def other_textbox(request):
+    return render(request, 'travel_buddy/other_textbox.html')

@@ -24,5 +24,6 @@ urlpatterns = [
     path('travel-question/', views.travel_question, name='travel_question'),
     path('itinerary-result/', views.itinerary_result_view, name='itinerary_result'),
     path('mood/', views.mood, name='mood'),
+    path('other-concerns/', views.other_textbox, name='other_textbox')
 ]
     
