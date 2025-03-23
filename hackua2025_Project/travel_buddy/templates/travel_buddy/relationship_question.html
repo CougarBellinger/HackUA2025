@@ -4,13 +4,13 @@
 
 <body>
     {% block title %}Travel Question{% endblock %}
-    
+
     {% block content %}
     <div class="container text-center my-5">
         <h1>{{ question }}</h1>
-         <form method="POST" action="{% url 'travel_question' %}">
+         <form method="POST" action="{% url 'relationship_question' %}">
             {% csrf_token %}
-             <input type="hidden" name="question_id" value="{{ question_id }}">
+             <input type="hidden" name="answer" id="selectedAnswer">
             <div class="row justify-content-center mt-4">
                 {% for answer in answers %}
                 <div class="col-md-4">
