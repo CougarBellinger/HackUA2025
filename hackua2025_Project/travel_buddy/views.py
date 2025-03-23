@@ -32,8 +32,8 @@ def travel_question(request):
         "with_who": {
             "question":"Who are you most likely to be traveling with on this trip?",
             "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
-            "next": "travel_time"
-        },
+            "next": ""
+        }
     }
 
     # Get the current question from the request or default to the first question
@@ -59,7 +59,7 @@ def travel_question(request):
         if next_question:
             return redirect(f"/questions/?question_id={next_question}")
         else:
-            return redirect("itinerary_result_view")  # Redirect to a summary or final page
+            return redirect(itinerary_result_view)  # Redirect to a summary or final page
 
     context = {
         "question_id": question_id,
