@@ -15,22 +15,22 @@ def travel_question(request):
             "next":"perfect_day"
         },
         "perfect_day": {
-            "question": " Imagine your perfect travel day. Would it involve...",
+            "question": "Imagine your perfect travel day. Would it involve...",
             "answers": ["Exploring bustling city streets and iconic landmarks", "Relaxing on a beautiful beach or by a serene lake", "Hiking through nature and discovering hidden gems", "Immersing yourself in local culture and traditions"],
             "next":"travel_vibe"
         },
         "travel_vibe": {
-            "question": "What's your ideal travel vibe? Are you looking for something that feels...",
+            "question": "What's your ideal travel vibe?",
             "answers": ["Adventurous and exciting", "Peaceful and rejuvenating", "Authentic and insightful", "Fun and social"],
             "next":"souvenir"
         },
         "souvenir": {
-            "question": "If you could bring only one type of souvenir back from a trip, what would it most likely be?",
+            "question": "If you could bring only one type of souvenir back from a trip, what would it be?",
             "answers": ["Something practical and useful", "A beautiful piece of art or craftsmanship", "A unique local food or drink", "Photos and memories"],
             "next": "with_who"
         },
         "with_who": {
-            "question":"Who are you most likely to be traveling with on this trip?",
+            "question":"Who are you planning on travelling with this trip?",
             "answers": ["Traveling solo", "Traveling with a partner", "Traveling with family", "Traveling with friends or group"],
             "next": ""
         }

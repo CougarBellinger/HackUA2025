@@ -6,26 +6,28 @@
     {% block title %}Travel Question{% endblock %}
     
     {% block content %}
-        <div class="container text-center my-5">
-        <h1>{{ question }}</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="question_id" value="{{ question_id }}">  <!-- Hidden question identifier -->
+    <div class="content">
+        <div class="question-container">
+            <h2 class="question-text">{{ question }}</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="question_id" value="{{ question_id }}">  <!-- Hidden question identifier -->
 
-            <div class="row justify-content-center mt-4">
-                {% for answer in answers %}
-                <div class="col-md-4">
-                    <button type="submit" name="answer" value="{{ answer }}"
-                        class="card answer-card {% if selected_answer == answer %}selected{% endif %}"
-                        style="cursor: pointer; border: none; width: 100%;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ answer }}</h5>
-                        </div>
-                    </button>
+                <div class="row justify-content-center mt-4">
+                    {% for answer in answers %}
+                    <div class="col-md-4">
+                        <button type="submit" name="answer" value="{{ answer }}"
+                            class="card answer-card {% if selected_answer == answer %}selected{% endif %}"
+                            style="cursor: pointer; border: none; width: 100%;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ answer }}</h5>
+                            </div>
+                        </button>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
     {% endblock %}

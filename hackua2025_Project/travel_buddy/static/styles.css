@@ -1,4 +1,61 @@
 /* static/styles.css */
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: left;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+}
+
+.question-container {
+    text-align: left;
+    width: 80%;
+    /* Adjust as needed */
+}
+
+.question-text {
+    font-size: 6em;
+    /* Make the question text large */
+    margin-bottom: 30px;
+    /* Increased margin for better separation */
+}
+
+.answer-card {
+    transition: transform 0.2s;
+}
+
+.answer-card:hover {
+    transform: scale(1.05);
+}
+
+.selected {
+    background-color: #007bff;
+    /* Example styling for selected answer */
+    color: white;
+}
+
 .card {
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -10,18 +67,26 @@
 }
 
 .custom-button {
-    background-color: #007bff; /* Primary blue color */
-    color: white; /* White text */
-    padding: 12px 24px; /* Adjust padding for better size */
-    font-size: 16px; /* Slightly larger text */
-    border-radius: 25px; /* Rounded corners */
-    border: none; /* Remove default border */
-    cursor: pointer; /* Show pointer on hover */
+    background-color: #007bff;
+    /* Primary blue color */
+    color: white;
+    /* White text */
+    padding: 12px 24px;
+    /* Adjust padding for better size */
+    font-size: 16px;
+    /* Slightly larger text */
+    border-radius: 25px;
+    /* Rounded corners */
+    border: none;
+    /* Remove default border */
+    cursor: pointer;
+    /* Show pointer on hover */
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .custom-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarges the button */
+    background-color: #0056b3;
+    /* Darker blue on hover */
+    transform: scale(1.05);
+    /* Slightly enlarges the button */
 }
-
