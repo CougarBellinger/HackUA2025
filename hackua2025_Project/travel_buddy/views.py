@@ -98,6 +98,8 @@ def itinerary_result_view(request):
     time = selected_answers.get("travel_type", "None")
     souvenir = selected_answers.get("souvenir", "None")
     with_who = selected_answers.get("with_who", "None")
+    duration = selected_answers.get("duration", "None")
+    budget = selected_answers.get("budget", "None")
     rules =  """ Give me a detailed itinerary based on the following
     Add hotel stay as well.
     Generate an approximate final budget for the entire itinerary.
@@ -108,7 +110,7 @@ def itinerary_result_view(request):
     day2 : <>
     ...
     """
-    itinerary_text = client.get_itinerary(destination, travel_type, time, souvenir, with_who, rules)
+    itinerary_text = client.get_itinerary(destination, travel_type, time, souvenir, with_who, duration, budget, rules)
     # Render the result in a template
     return render(request, 'travel_buddy/itinerary_result.html', {
         'itinerary': itinerary_text

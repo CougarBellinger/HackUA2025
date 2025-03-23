@@ -11,13 +11,15 @@ class OpenAIClient:
         self.temperature = temperature
         self.max_tokens = max_tokens
         self.client = OpenAI()
-    def get_itinerary(self, destination, travel_type, time, souvenir, with_who, rules):
+    def get_itinerary(self, destination, travel_type, time, souvenir, with_who, duration, budget, rules):
         text = f"""
         Destination : {destination}
         type of travel: {travel_type}
         time : {time}
         souvenir : {souvenir}
         with_who : {with_who}
+        duration : {duration}
+        budget : {budget}
         """
 
         prompt = f"""
@@ -64,6 +66,7 @@ if __name__ == "__main__":
     time = "sometime this December"
     souvenir = "I want something rustic!"
     with_who = "My bestest buds!"
-
-    result = client.get_itinerary(destination, travel_type, souvenir, time, with_who, rules)
+    duration = "A week"
+    budget = "$1000"
+    result = client.get_itinerary(destination, travel_type, souvenir, time, with_who, duration, budget, rules)
     print(result)
